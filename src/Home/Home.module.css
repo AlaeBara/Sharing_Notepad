@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Cinzel:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Rubik&display=swap');
 
 .container {
   display: flex;
@@ -8,9 +8,8 @@
 
 .addButton {
   font-size: 30px;
-  width: 60px; 
+  width: 60px;
   height: 60px;
-  padding: 0; 
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -18,10 +17,11 @@
   color: white;
   position: fixed;
   right: 5%;
-  bottom: 100px;
+  bottom: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
 }
 
 .modalOverlay {
@@ -34,11 +34,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1001;
 }
 
 .modal {
   background: white;
-  padding: 50px;
+  padding: 2rem;
   border-radius: 10px;
   width: 90%;
   max-width: 500px;
@@ -49,96 +50,117 @@
   align-items: center;
 }
 
-.Title {
+.title {
   font-family: 'Carter One', system-ui;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .closeButton {
   position: absolute;
-  right: 1%;
-  top: 3%;
+  right: 1rem;
+  top: 1rem;
   background: transparent;
   border: none;
   cursor: pointer;
 }
 
 .input, .textarea {
-  width: 80%;
-  padding: 10px;
-  margin-bottom: 10px;
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
   border-radius: 5px;
   border: 1px solid #ddd;
+  font-family: 'Rubik', sans-serif;
 }
 
 .textarea {
   height: 100px;
+  resize: vertical;
 }
 
 .tagInputContainer {
   display: flex;
   align-items: center;
-  width: 50%;
-  margin-bottom: 10px;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
 .tagInputField {
   flex: 1;
-  padding: 5px;
+  padding: 0.5rem;
   border-radius: 5px;
   border: 1px solid #ddd;
+  font-family: 'Rubik', sans-serif;
 }
 
 .addTagButton {
-  margin-left: 10px;
-  border-radius: 5px;
-  padding: 5px 10px;
+  margin-left: 0.5rem;
+  background: transparent;
   border: none;
   cursor: pointer;
-  font-weight: bold;
-  background: transparent;
 }
 
 .tagContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
-  width: 80%;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .tag {
   display: flex;
   align-items: center;
   background-color: #f0f0f0;
-  border-radius: 10px;
-  padding: 5px 10px;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 20px;
+  border-radius: 15px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
 }
 
-.tag span{
-    color: #000;
-    font-weight: bold;
-    font-family: "Rubik", sans-serif;
+.tag span {
+  color: #000;
+  font-weight: bold;
+  font-family: "Rubik", sans-serif;
 }
 
 .removeTagButton {
   background: none;
   border: none;
-  color: #999;
   cursor: pointer;
-  font-size: 16px;
-  margin-left: 5px;
+  margin-left: 0.25rem;
+  display: flex;
+  align-items: center;
 }
 
 .addNote {
   background-color: #35ac4d;
   color: white;
-  padding: 10px 20px;
+  padding: 0.75rem 1rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 80%;
-  margin-top: 10px;
+  width: 100%;
+  font-family: 'Rubik', sans-serif;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .modal {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .input, .textarea, .tagInputField {
+    padding: 0.5rem;
+  }
+
+  .addButton {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
 }
