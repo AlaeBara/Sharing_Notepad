@@ -1,0 +1,165 @@
+.container {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 350px;
+  background-color: #ffffff;
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.pinIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.8em;
+  color: #35ac4d;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.pinIcon:hover {
+  color: #0056b3;
+}
+
+.displayContent h1 {
+  text-align: center;
+  margin: 0;
+  margin-bottom: 15px;
+  font-size: 1.8em;
+  color: #333333;
+}
+
+.content {
+  margin-bottom: 50px;
+}
+
+.content .date {
+  color: #888888;
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.content p {
+  margin: 0;
+  color: #444444;
+  line-height: 1.7;
+}
+
+.content h4 {
+  color: #666666;
+  font-size: 1em;
+}
+
+.editContent {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.editContent input,
+.editContent textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.editContent textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.iconsNote {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 20px;
+}
+
+.iconsNote svg {
+  font-size: 1.6em;
+  color: #555555;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.iconsNote svg:hover {
+  color: #35ac4d;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .pinIcon {
+    font-size: 1.6em;
+    top: 8px;
+    right: 8px;
+  }
+
+  .displayContent h1 {
+    font-size: 1.6em;
+  }
+
+  .content .date,
+  .content h4 {
+    font-size: 0.9em;
+  }
+
+  .editContent input,
+  .editContent textarea {
+    padding: 12px;
+  }
+
+  .iconsNote svg {
+    font-size: 1.4em;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .pinIcon {
+    font-size: 1.4em;
+    top: 5px;
+    right: 5px;
+  }
+
+  .displayContent h1 {
+    font-size: 1.4em;
+  }
+
+  .content .date,
+  .content h4 {
+    font-size: 0.8em;
+  }
+
+  .editContent input,
+  .editContent textarea {
+    padding: 10px;
+  }
+
+  .iconsNote svg {
+    font-size: 1.2em;
+  }
+}
