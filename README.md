@@ -19,7 +19,7 @@ Le but de ce projet est de développer l'interface utilisateur pour le partage d
                Email:
                Password:
                Comfirm Paswword:
-       - Signup button
+    - Signup button
 
 - Login page:
     - Logo(link cliquable)
