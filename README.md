@@ -21,15 +21,21 @@ Le but de ce projet est de développer l'interface utilisateur pour le partage d
                Comfirm Paswword:
        - Signup button
 
-- Login page: 
+- Login page:
     - Logo(link cliquable)
     - Formulaire: 
         -      Email:
                Password:
      - Login button
+- Carte page: 
+   - Titre
+   - Content
+   - Tags
+   - Add Tags avec le bouton +
+   - Add Button
 
 ### Définition de tableau kanban:
-1- Je vous oriente vers l'image KanbanNotes.png pour voir plus de détails.
+- Je vous oriente vers l'image KanbanNotes.png pour voir plus de détails.
 
 ### Définition des Daily stand up pour assurer une bonne communication entre les membres de l'équipe avec limitation des taches en cours.
 
