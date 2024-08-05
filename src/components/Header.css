@@ -1,0 +1,77 @@
+/* Header.css */
+.header {
+  height: 4rem; /* h-16 */
+  background-color: white; /* bg-white */
+}
+
+.header-container {
+  height: 100%; /* h-full */
+  display: flex;
+  align-items: center;
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  justify-content: space-between; /* justify-between */
+  position: relative; /* to use absolute positioning for centering the search bar */
+}
+
+.logo-link {
+  display: block;
+}
+
+.search-bar {
+  display: none; /* hidden */
+}
+
+.search-bar-lg {
+  display: flex; /* lg:flex */
+  align-items: center;
+  width: 20rem; /* max-w-sm */
+  justify-content: space-between;
+  border: 1px solid; /* border */
+  border-radius: 9999px; /* rounded-full */
+  padding-left: 0.5rem; /* pl-2 */
+  position: absolute; /* position the search bar absolutely */
+  left: 50%; /* center horizontally */
+  transform: translateX(-50%); /* adjust centering */
+}
+
+.search-input {
+  width: 100%; /* w-full */
+  outline: none; /* outline-none */
+}
+
+.search-button {
+  font-size: 1.125rem; /* text-lg */
+  min-width: 50px; /* min-w-[50px] */
+  height: 2rem; /* h-8 */
+  background-color: #1F6F78; /* bg-[#1F6F78] */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 9999px 9999px 0; /* rounded-r-full */
+  color: white; /* text-white */
+}
+
+.user-actions {
+  display: flex; /* flex */
+  align-items: center;
+  gap: 1.75rem; /* gap-7 */
+}
+
+.user-link {
+  font-size: 1.875rem; /* text-3xl */
+  cursor: pointer; /* cursor-pointer */
+}
+
+.logout-link {
+  padding-left: 0.75rem; /* px-3 */
+  padding-right: 0.75rem; /* px-3 */
+  padding-top: 0.25rem; /* py-1 */
+  padding-bottom: 0.25rem; /* py-1 */
+  font-size: 1.25rem; /* text-xl */
+  font-weight: bold; /* font-bold */
+}
+
+.logout-link:hover {
+  text-decoration: underline; /* hover:underline */
+}
