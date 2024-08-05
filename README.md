@@ -1,80 +1,81 @@
+# 📝 Projet: Développement du bloc notes avec option de partage front-end
 
-# Projet: Développement du bloc notes avec option de partage front-end:
-Le but de ce projet est de développer l'interface utilisateur pour le partage de notes spécifiques, définis dans une durée de 7jours .
+Le but de ce projet est de développer l'interface utilisateur pour le partage de notes spécifiques, définies dans une durée de **7 jours**.
 
-## Prototypage & User flow: 
-- Je vous oriente vers l'image Prototypage&Userflow.png pour voir plus de détails.  
+## 📐 Prototypage & User Flow
 
-## Page & Content:
-- Home page:  
-     - Logo(link cliquable)
-     - Barre de recherche 
-     - Compte utilisateur icone (link cliquable)
-      - Logout(link cliquable)
+Pour plus de détails, veuillez consulter l'image **Prototypage&Userflow.png**.
 
-- Signup page: 
-     - Logo(link cliquable)
-      - Formulaire:  
-        -      Name:
-               Email:
-               Password:
-               Comfirm Paswword:
-    - Signup button
+## 📄 Page & Contenu
 
-- Login page:
-    - Logo(link cliquable)
-    - Formulaire: 
-        -      Email:
-               Password:
-     - Login button
-- Carte page: 
-   - Titre
-   - Content
-   - Tags
-   - Add Tags avec le bouton +
-   - Add Button
+### 🏠 Home Page
+- 🔗 **Logo** (lien cliquable)
+- 🔍 **Barre de recherche**
+- 👤 **Icône de compte utilisateur** (lien cliquable)
+- 🔓 **Déconnexion** (lien cliquable)
 
-### Définition de tableau kanban:
-- Je vous oriente vers l'image KanbanNotes.png pour voir plus de détails.
+### 📝 Page d'inscription
+- 🔗 **Logo** (lien cliquable)
+- **Formulaire**:  
+  - ✏️ Nom:
+  - ✉️ Email:
+  - 🔒 Mot de passe:
+  - 🔄 Confirmer le mot de passe:
+- 🔘 **Bouton d'inscription**
 
-### Définition des Daily stand up pour assurer une bonne communication entre les membres de l'équipe avec limitation des taches en cours.
+### 🔑 Page de connexion
+- 🔗 **Logo** (lien cliquable)
+- **Formulaire**:  
+  - ✉️ Email:
+  - 🔒 Mot de passe:
+- 🔘 **Bouton de connexion**
 
-## Fonctionnalités:
+### 📋 Carte Page
+- 🏷️ **Titre**
+- 📄 **Contenu**
+- 🏷️ **Tags**
+- ➕ **Ajouter des tags** avec le bouton +
+- 🔘 **Bouton Ajouter**
 
-### Amina Ahllal: 
+## 🗂️ Définition de tableau Kanban
+
+Pour plus de détails, veuillez consulter l'image **KanbanNotes.png**.
+
+## 🔄 Définition des Daily Stand Up
+
+Pour assurer une bonne communication entre les membres de l'équipe avec limitation des tâches en cours.
+
+## 🔧 Fonctionnalités
+
+### 🖌️ **Amina Ahllal**
 - Design et structure des pages
-- Creation des pages de connexions
-- Front-end : Signup, Login et Header
+- Création des pages de connexion
+- Front-end : Inscription, Connexion et En-tête
 
-### Asmae Lhroub:
-- Creation des cartes
-- Front-end : page Home, carte d'ajoute
+### 🎨 **Asmae Lhroub**
+- Création des cartes
+- Front-end : page d'accueil, carte d'ajout
 
-### Younes Idoulhiane:
+### 📝 **Younes Idoulhiane**
 - Documentation
 - Testing
 
-### Alae eddin Bara:
-- Configuration de l'evironnement GitHub
-- Collaboration avec Asmae pour créer la page Home
+### ⚙️ **Alae eddin Bara**
+- Configuration de l'environnement GitHub
+- Collaboration avec Asmae pour créer la page d'accueil
 - Collaboration avec Asmae pour créer la carte d'ajout
 
-## Les outils:
+## 🛠️ Outils
 
-- Reactjs
+- ⚛️ **Reactjs**
+- 🌐 **HTML**
+- 🎨 **CSS**
+- 🚀 **react-router-dom**
+- ⚙️ **react-dom/client**
+- 🖌️ **react-icons/fa**
+- 🖌️ **react-icons/gr**
+- 📦 **@import**
+- 📱 **@media**
 
-- HTML
+---
 
-- CSS
-
-- react-router-dom
-
-- react-dom/client
-
-- react-icons/fa
-
-- react-icons/gr
-
-- @import
-
-- @media
