@@ -64,6 +64,7 @@ Pour assurer une bonne communication entre les membres de l'équipe avec limitat
 
 ### 📝 **Younes Idoulhiane**
 - Documentation
+- Notification Card
 - Testing
 
 ### ⚙️ **Alae eddin Bara**
