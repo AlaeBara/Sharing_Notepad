@@ -1,0 +1,248 @@
+.header {
+  height: 5rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.headerContainer {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+  flex-wrap: wrap; /* Added for better wrapping */
+}
+
+.logoLink {
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.logoLink:hover {
+  transform: scale(1.05);
+}
+
+.searchBarLg {
+  display: none;
+}
+
+.userActions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.userLink {
+  font-size: 1.75rem;
+  color: #35ac4d;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.userLink:hover {
+  color: #2e8f3e;
+  transform: scale(1.1);
+}
+
+.logoutLink {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #35ac4d;
+  border: none;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.logoutLink:hover {
+  background-color: #2e8f3e;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.notificationIcon {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.notificationIcon:hover {
+  transform: scale(1.1);
+}
+
+.notificationPopup {
+  position: absolute;
+  top: 4rem;
+  right: 2rem;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  min-width: 200px;
+  z-index: 1001;
+}
+
+.popupContent h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.notificationItem {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notificationItem:last-child {
+  border-bottom: none;
+}
+
+.notificationItem span {
+  display: block;
+  color: #333;
+  font-size: 1rem;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.acceptButton,
+.declineButton {
+  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.acceptButton {
+  background-color: #35ac4d;
+  color: #ffffff;
+}
+
+.acceptButton:hover {
+  background-color: #2e8f3e;
+}
+
+.declineButton {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.declineButton:hover {
+  background-color: #c0c0c0;
+}
+
+@media (min-width: 768px) {
+  .searchBarLg {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    max-width: 500px;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background-color: #f5f5f5;
+  }
+
+  .searchBarLg:focus-within {
+    box-shadow: 0 0 0 3px rgba(53, 172, 77, 0.3);
+    background-color: #ffffff;
+  }
+
+  .searchInput {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: transparent;
+  }
+
+  .searchButton {
+    padding: 10px;
+    height: 100%;
+    background-color: #35ac4d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 50%;
+  }
+
+  .searchButton:hover {
+    background-color: #2e8f3e;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    margin-bottom: 20vh;
+  }
+  .headerContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.75rem;
+  }
+
+  .logoLink {
+    order: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .userActions {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .searchBarLg {
+    display: flex;
+    order: 3;
+    width: 100%;
+    max-width: none;
+    margin-top: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+  }
+
+  .searchInput {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border: none;
+    outline: none;
+    font-size: 0.9rem; /* Slightly smaller font size */
+    background-color: transparent;
+  }
+
+  .searchButton {
+    padding: 0.6rem;
+    height: 100%;
+    background-color: #35ac4d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+}
