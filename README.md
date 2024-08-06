@@ -6,9 +6,10 @@ Le but de ce projet est de développer l'interface utilisateur pour le partage d
 
 Pour plus de détails, veuillez consulter l'image **Prototypage&Userflow.png**.
 
-![KanbanNotes](https://github.com/user-attachments/assets/6fa04db7-009b-44b8-a0d0-38e69f26a020)
+![KanbanNotes](https://github.com/user-attachments/assets/995cc059-4299-4455-84ee-2bdfa1dcdca6)
 
-![Prototypage Userflow](https://github.com/user-attachments/assets/8cedf2f5-d282-43f6-a55f-8628f57d59c3)
+![PrototypageUserflow](https://github.com/user-attachments/assets/51f2e462-b70d-4d4d-bfca-87a14f144b9c)
+
 
 
 
