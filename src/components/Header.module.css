@@ -56,7 +56,8 @@
   background-color: #35ac4d;
   border: none;
   border-radius: 25px;
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
   text-decoration: none;
 }
 
@@ -64,6 +65,85 @@
   background-color: #2e8f3e;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
+}
+
+.notificationIcon {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.notificationIcon:hover {
+  transform: scale(1.1);
+}
+
+.notificationPopup {
+  position: absolute;
+  top: 4rem;
+  right: 2rem;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  min-width: 200px;
+  z-index: 1001;
+}
+
+.popupContent h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.notificationItem {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notificationItem:last-child {
+  border-bottom: none;
+}
+
+.notificationItem span {
+  display: block;
+  color: #333;
+  font-size: 1rem;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.acceptButton,
+.declineButton {
+  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.acceptButton {
+  background-color: #35ac4d;
+  color: #ffffff;
+}
+
+.acceptButton:hover {
+  background-color: #2e8f3e;
+}
+
+.declineButton {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.declineButton:hover {
+  background-color: #c0c0c0;
 }
 
 @media (min-width: 768px) {
@@ -112,7 +192,7 @@
 }
 
 @media (max-width: 767px) {
-  .header{
+  .header {
     margin-bottom: 20vh;
   }
   .headerContainer {
