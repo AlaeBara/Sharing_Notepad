@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Logo from '../assest/Logo.svg';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styles from './Login.module.css';
 
 const Login = () => {
@@ -10,6 +13,7 @@ const Login = () => {
     email: '',
     password: '',
   });
+  const navigate = useNavigate();
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -19,13 +23,34 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/signIn', {
+        email: data.email,
+        password: data.password,
+      }, {
+        withCredentials: true
+      });
+      
+      if (response.status === 200) {
+        toast.success("Logged in successfully!");
+        setTimeout(() => {
+          navigate('/');
+        }, 2000);
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Server error. Please try again later...");
+      }
+    }
   };
 
   return (
     <section className={styles.loginSection}>
+      <ToastContainer />
       <div className={styles.container}>
         <div className={styles.loginBox}>
           <div className={styles.logo}>

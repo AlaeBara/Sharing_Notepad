@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Logo from "./Logo";
 import { GrSearch } from "react-icons/gr";
-import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import notificationIcon from "../assest/Notification_icon.png";
 
 const Header = () => {
   const [showNotifications, setShowNotifications] = useState(false);
+  const navigate = useNavigate();
   const [sharedNotes, setSharedNotes] = useState([
     {
       id: 1,
@@ -34,7 +36,6 @@ const Header = () => {
       )
     );
     console.log(`Accepted note with id: ${id}`);
-    // Add your accept logic(backend) here, e.g., API call to accept the note
   };
 
   const handleDecline = (id) => {
@@ -44,7 +45,18 @@ const Header = () => {
       )
     );
     console.log(`Declined note with id: ${id}`);
-    // Add your decline logic(backend) here, e.g., API call to decline the note
+  };
+
+  const handleLogout = async () => {
+    try {
+      await axios.get('http://localhost:5000/api/auth/logout', {
+        withCredentials: true,
+      });
+      // Redirect to login page after successful logout
+      navigate('/login');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
   };
 
   return (
@@ -66,9 +78,9 @@ const Header = () => {
           </button>
         </div>
         <div className={styles.userActions}>
-          <Link to={"/"} className={styles.logoutLink}>
+          <button onClick={handleLogout} className={styles.logoutLink}>
             Logout
-          </Link>
+          </button>
           <div
             className={styles.notificationIcon}
             onClick={toggleNotifications}

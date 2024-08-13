@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import style from './Home.module.css';
-import Cart from '../components/Cart'
+import Cart from '../components/Cart';
+import Header from '../components/Header';
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -64,6 +65,7 @@ const Home = () => {
   return (
 
     <>
+      <Header />
 
       <div className={style.yourNote}>
         <Cart
