@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Logo from '../assest/Logo.svg';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styles from './SignUp.module.css';
 
 const SignUp = () => {
+  const history = useNavigate()
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [data, setData] = useState({
@@ -22,18 +26,44 @@ const SignUp = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle sign-up logic here
+    
+    if (data.password !== data.confirmPassword) {
+      toast.error("Passwords do not match!");
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/signup', {
+        username: data.name,
+        email: data.email,
+        password: data.password,
+      });
+
+      if (response.status === 201) {
+        toast.success("Registered successfully!");
+        history('/login')
+
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Server error. Please try again later...");
+      }
+    }
   };
 
   return (
     <section className={styles.signUpSection}>
+      <ToastContainer />
       <div className={styles.container}>
         <div className={styles.signUpBox}>
           <div className={styles.logo}>
             <img src={Logo} alt='Sign Up icon' />
           </div>
+
           <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.inputGroup}>
               <label className={styles.label}>Name:</label>

@@ -1,10 +1,9 @@
-const User = require('../models/User');
+const User = require('../Model/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 
-// Sign-Up Controller
 const SignUp = async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -32,9 +31,10 @@ const SignUp = async (req, res) => {
   }
 };
 
-// Sign-In Controller
+
 const SignIn = async (req, res) => {
   try {
+    
     const { email, password } = req.body;
 
     // Check if email exists
@@ -49,10 +49,17 @@ const SignIn = async (req, res) => {
       return res.status(400).json({ message: "Incorrect password" });
     }
 
-    // Generate JWT token (optional)
-    const token = jwt.sign({ user_check }, process.env.token_jwt, { expiresIn: '1h' });
+    // Generate JWT token
+    const token = jwt.sign({ userId: user_check._id }, process.env.token_jwt, { expiresIn: '1h' });
 
-    res.status(200).json({ message: "Logged in successfully!", token });
+    // Set token in an HTTP-only cookie
+    res.cookie("token", token, {
+      httpOnly: true, // Prevents access the cookie from  JavaScript 
+      secure: true, // Ensures the cookie is sent over HTTPS
+      sameSite: "strict", // Protects against CSRF
+    });
+
+    res.status(200).json({ message: "Logged in successfully!" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error. Please try again later." });
@@ -60,9 +67,16 @@ const SignIn = async (req, res) => {
 };
 
 
+const logout = (req, res)=>{
+  res.clearCookie('token');
+  res.status(200).json({ message: 'Logged out successfully' });
+}
 
 
 
 
 
-module.exports = { SignUp, SignIn };
+
+
+
+module.exports = { SignUp, SignIn, logout };
