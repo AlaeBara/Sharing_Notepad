@@ -8,6 +8,8 @@ const SignUp = async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
+    // const user = req.user._id
+
     // Check if email already exists
     const user_check = await User.findOne({ email });
     if (user_check) {

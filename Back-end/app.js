@@ -6,6 +6,9 @@ require('dotenv').config();
 
 const authRoutes = require('./Router/authRoutes');
 
+const NoteRoutes = require('./Router/noteRoutes');
+
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -33,6 +36,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Use the auth routes
 app.use('/api/auth', authRoutes);
+app.use('/api/note', NoteRoutes);
 
 
 
