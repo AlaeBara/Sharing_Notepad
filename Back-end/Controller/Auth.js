@@ -52,7 +52,7 @@ const SignIn = async (req, res) => {
     }
 
     // Generate JWT token
-    const token = jwt.sign({ userId: user_check._id }, process.env.token_jwt, { expiresIn: '1h' });
+    const token = jwt.sign({ user:user_check }, process.env.token_jwt, { expiresIn: '1h' });
 
     // Set token in an HTTP-only cookie
     res.cookie("token", token, {
