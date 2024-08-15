@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import style from './Home.module.css';
 import Cart from '../components/Cart';
 import Header from '../components/Header';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios'
+import { Link, useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -9,6 +13,8 @@ const Home = () => {
   const [content, setContent] = useState('');
   const [tags, setTags] = useState([]);
   const [currentTag, setCurrentTag] = useState('');
+  const history = useNavigate()
+
 
   const handleAddTag = () => {
     if (currentTag.trim()) {
@@ -31,6 +37,31 @@ const Home = () => {
   const closeModal = () => {
     setShowModal(false);
     resetForm();
+  };
+
+  const addnote = async (e) => {
+    e.preventDefault();
+  
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/note/addnote', {
+        title:title,
+        content: content,
+        tags: tags
+      });
+
+      if (response.status === 201) {
+        toast.success("added successfully!");
+        history('/')
+
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Server error. Please try again later...");
+      }
+    }
   };
 
 
@@ -159,7 +190,7 @@ const Home = () => {
                     ))}
                   </div>
 
-                  <button onClick={closeModal} className={style.addNote}>Add</button>
+                  <button onClick={addnote} className={style.addNote}>Add</button>
                 </div>
               </div>
             )}
