@@ -1,5 +1,16 @@
 const mongoose = require('mongoose');
 
+// Helper function to format the date
+function formatDate(date) {
+  const d = new Date(date);
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  const year = d.getFullYear();
+  const hours = String(d.getHours()).padStart(2, '0');
+  const minutes = String(d.getMinutes()).padStart(2, '0');
+  return `${month}-${day}-${year} ${hours}:${minutes}`;
+}
+
 const noteSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -28,21 +39,23 @@ const noteSchema = new mongoose.Schema({
   },
 
   createdAt: {
-    type: Date,
-    default: Date.now,
+    type: String, // Change to String
+    default: function() {
+      return formatDate(new Date());
+    },
   },
 
   updatedAt: {
-    type: Date,
-    default: Date.now,
+    type: String, // Change to String
+    default: function() {
+      return formatDate(new Date());
+    },
   },
 });
 
-
 // Update `updatedAt` before saving
-
 noteSchema.pre('save', function(next) {
-  this.updatedAt = Date.now();
+  this.updatedAt = formatDate(new Date());
   next();
 });
 

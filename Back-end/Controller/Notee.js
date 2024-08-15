@@ -23,5 +23,16 @@ const AddNote = async (req, res) => {
   }
 };
 
+const GetNotes = async (req, res) => {
+  try {
+    const notes = await Note.find();  
+   
+    res.status(200).json({ notes, message: "Notes retrieved successfully!" }); 
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error retrieving notes. Please try again later." }); 
+  }
+};
 
-module.exports={AddNote}
+
+module.exports={AddNote ,GetNotes}

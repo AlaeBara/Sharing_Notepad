@@ -18,13 +18,18 @@ const Card = ({
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(title);
   const [editContent, setEditContent] = useState(content);
-  const [editTags, setEditTags] = useState(tags);
+  const [editTags, setEditTags] = useState(tags.map(tag => `#${tag}`).join(' ')); // Format tags for editing
 
   const handleEditClick = () => {
-    setIsEditing(!isEditing);
     if (isEditing) {
-      onEdit(id, editTitle, editContent, editTags);
+      // Convert formatted tags back to an array
+      const updatedTags = editTags
+        .split(' ')
+        .map(tag => tag.replace(/^#/, '').trim())
+        .filter(tag => tag); // Remove empty strings
+      onEdit(id, editTitle, editContent, updatedTags);
     }
+    setIsEditing(!isEditing);
   };
 
   return (
@@ -56,7 +61,9 @@ const Card = ({
           <div className={styles.content}>
             <h3 className={styles.date}>{date}</h3>
             <p>{content}</p>
-            <h4>{tags}</h4>
+            <h4>
+              {tags.map(tag => `#${tag}`).join(' ')} {/* Format tags for display */}
+            </h4>
           </div>
         </div>
       )}

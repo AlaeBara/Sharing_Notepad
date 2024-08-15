@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './Home.module.css';
 import Cart from '../components/Cart';
 import Header from '../components/Header';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios'
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -13,7 +13,8 @@ const Home = () => {
   const [content, setContent] = useState('');
   const [tags, setTags] = useState([]);
   const [currentTag, setCurrentTag] = useState('');
-  const history = useNavigate()
+  const [notes, setNotes] = useState([]);
+  const navigate = useNavigate();
 
   const handleAddTag = () => {
     if (currentTag.trim()) {
@@ -38,23 +39,24 @@ const Home = () => {
     resetForm();
   };
 
-  const addnote = async (e) => {
+  // Add note
+  const addNote = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await axios.post('http://localhost:5000/api/note/addnote', {
-        title: title,
-        content: content,
-        tags: tags
+        title,
+        content,
+        tags,
       }, {
-        withCredentials: true
+        withCredentials: true,
       });
 
       if (response.status === 201) {
         toast.success("Note added successfully!");
         resetForm();
         setShowModal(false);
-        history('/');
+        fetchNotes(); // Fetch notes again to update the list
       }
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -65,14 +67,23 @@ const Home = () => {
     }
   };
 
-  // Cart data and handlers
-  const cardData = {
-    id: 1,
-    title: "Sample Card Title",
-    content: "This is the sample content for the card.",
-    date: "2024-08-05",
-    tags: "sample, demo, example",
+  // Fetch notes
+  const fetchNotes = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/note/allnote' ,{
+        withCredentials: true,
+      });
+      setNotes(response.data.notes);
+      console.log(response.data.notes)
+    } catch (error) {
+      toast.error("Failed to fetch notes.");
+      console.error(error);
+    }
   };
+
+  useEffect(() => {
+    fetchNotes();
+  }, []);
 
   const handlePin = (id) => {
     console.log(`Pinned card with id: ${id}`);
@@ -89,24 +100,34 @@ const Home = () => {
   const handleDelete = (id) => {
     console.log(`Deleted card with id: ${id}`);
   };
+ 
 
   return (
     <>
       <Header />
 
       <div className={style.yourNote}>
-        <Cart
-          id={cardData.id}
-          title={cardData.title}
-          content={cardData.content}
-          date={cardData.date}
-          tags={cardData.tags}
-          onPin={handlePin}
-          onShare={handleShare}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-        />
+        {notes.length > 0 ? (
+          notes.map((cardData) => (
+            <Cart
+              key={cardData._id}
+              title={cardData.title}
+              content={cardData.content}
+              date={cardData.createdAt}
+              tags={cardData.tags}
+              onPin={() => handlePin(cardData._id)}
+              onShare={() => handleShare(cardData._id)}
+              onEdit={() => handleEdit(cardData._id)}
+              onDelete={() => handleDelete(cardData._id)}
+            />
+          ))
+        ) : (
+          <h2 className={style.noNotes}>No notes available</h2>
+        )}
       </div>
+
+
+
 
       <div className={style.container}>
         <button onClick={() => setShowModal(true)} className={style.addButton}>
@@ -117,7 +138,7 @@ const Home = () => {
           <div className={style.modalOverlay}>
             <div className={style.modal}>
               <button onClick={closeModal} className={style.closeButton}>
-                <img width="24" height="24" src="https://img.icons8.com/quill/50/delete-sign.png" alt="close"/>
+                <img width="24" height="24" src="https://img.icons8.com/quill/50/delete-sign.png" alt="close" />
               </button>
 
               <h2 className={style.title}>Add Note</h2>
@@ -146,7 +167,7 @@ const Home = () => {
                   className={style.tagInputField}
                 />
                 <button onClick={handleAddTag} className={style.addTagButton}>
-                  <img width="24" height="24" src="https://img.icons8.com/quill/50/filled-plus-2-math.png" alt="add"/>
+                  <img width="24" height="24" src="https://img.icons8.com/quill/50/filled-plus-2-math.png" alt="add" />
                 </button>
               </div>
 
@@ -155,13 +176,13 @@ const Home = () => {
                   <div key={index} className={style.tag}>
                     <span># {tag}</span>
                     <button onClick={() => handleRemoveTag(index)} className={style.removeTagButton}>
-                      <img width="12" height="12" src="https://img.icons8.com/material-rounded/24/delete-sign.png" alt="remove"/>
+                      <img width="12" height="12" src="https://img.icons8.com/material-rounded/24/delete-sign.png" alt="remove" />
                     </button>
                   </div>
                 ))}
               </div>
 
-              <button onClick={addnote} className={style.addNote}>Add</button>
+              <button onClick={addNote} className={style.addNote}>Add</button>
             </div>
           </div>
         )}
