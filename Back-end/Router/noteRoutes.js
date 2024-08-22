@@ -6,10 +6,13 @@ const router = express.Router();
 
 // Route for add note
 router.post("/addnote", jwtMiddleware, AddNote);
-// Route for update note
-router.post("/updatenote/:id", jwtMiddleware, UpdateNote);
 
 // Route for get note
 router.get("/allnote", jwtMiddleware, GetNotes);
+
+// Route for update note
+router.put("/updatenote/:id", jwtMiddleware, UpdateNote);
+
+
 
 module.exports = router;

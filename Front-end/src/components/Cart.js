@@ -3,6 +3,7 @@ import { BsFillPinAngleFill } from "react-icons/bs";
 import { IoMdShareAlt } from "react-icons/io";
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
 import styles from "./Cart.module.css";
+import axios from 'axios';
 
 const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -16,46 +17,45 @@ const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
     setIsEditing(!isEditing);
   };
 
+  
+
   const handleUpdateClick = async () => {
     const updatedTags = editTags
       .split(" ")
       .map((tag) => tag.replace(/^#/, "").trim())
       .filter((tag) => tag);
-
+  
     const updatedNote = {
       title: editTitle,
       content: editContent,
       tags: updatedTags,
     };
-
+  
     try {
-      const response = await fetch(`http://localhost:5000/notes/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedNote),
+      console.log("id:", id);
+      const response = await axios.put(`http://localhost:5000/api/note/updatenote/${id}`, updatedNote, {
+        withCredentials: true, 
       });
-
-      if (response.ok) {
-        const updatedNoteFromServer = await response.json();
+      
+      if (response.status === 200) {
+        const { note: updatedNoteFromServer } = response.data;
         console.log("Update successful:", updatedNoteFromServer);
-
+  
         // Update the state with the new data
-        setEditTitle(updatedNoteFromServer.note.title);
-        setEditContent(updatedNoteFromServer.note.content);
-        setEditTags(
-          updatedNoteFromServer.note.tags.map((tag) => `#${tag}`).join(" ")
-        );
+        setEditTitle(updatedNoteFromServer.title);
+        setEditContent(updatedNoteFromServer.content);
+        setEditTags(updatedNoteFromServer.tags.map((tag) => `#${tag}`).join(" "));
       } else {
+        alert("error updating note")
         console.error("Update failed:", response.statusText);
       }
     } catch (error) {
       console.error("Error updating note:", error);
     }
-
-    setIsEditing(false); // Exit edit mode after updating
+  
+    setIsEditing(false);
   };
+  
 
   return (
     <div className={styles.container}>

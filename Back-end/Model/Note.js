@@ -53,10 +53,4 @@ const noteSchema = new mongoose.Schema({
   },
 });
 
-// Update `updatedAt` before saving
-noteSchema.pre('save', function(next) {
-  this.updatedAt = formatDate(new Date());
-  next();
-});
-
 module.exports = mongoose.model('Note', noteSchema);

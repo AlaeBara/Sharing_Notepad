@@ -74,7 +74,6 @@ const Home = () => {
         withCredentials: true,
       });
       setNotes(response.data.notes);
-      console.log(response.data.notes)
     } catch (error) {
       toast.error("Failed to fetch notes.");
       console.error(error);
@@ -111,6 +110,7 @@ const Home = () => {
           notes.map((cardData) => (
             <Cart
               key={cardData._id}
+              id={cardData._id}
               title={cardData.title}
               content={cardData.content}
               date={cardData.createdAt}
