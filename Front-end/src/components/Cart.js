@@ -3,7 +3,7 @@ import { BsFillPinAngleFill } from "react-icons/bs";
 import { IoMdShareAlt } from "react-icons/io";
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
 import styles from "./Cart.module.css";
-import axios from 'axios';
+import axios from "axios";
 
 const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -17,45 +17,48 @@ const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
     setIsEditing(!isEditing);
   };
 
-  
-
   const handleUpdateClick = async () => {
     const updatedTags = editTags
       .split(" ")
       .map((tag) => tag.replace(/^#/, "").trim())
       .filter((tag) => tag);
-  
+
     const updatedNote = {
       title: editTitle,
       content: editContent,
       tags: updatedTags,
     };
-  
+
     try {
       console.log("id:", id);
-      const response = await axios.put(`http://localhost:5000/api/note/updatenote/${id}`, updatedNote, {
-        withCredentials: true, 
-      });
-      
+      const response = await axios.put(
+        `http://localhost:5000/api/note/updatenote/${id}`,
+        updatedNote,
+        {
+          withCredentials: true,
+        }
+      );
+
       if (response.status === 200) {
         const { note: updatedNoteFromServer } = response.data;
         console.log("Update successful:", updatedNoteFromServer);
-  
+
         // Update the state with the new data
         setEditTitle(updatedNoteFromServer.title);
         setEditContent(updatedNoteFromServer.content);
-        setEditTags(updatedNoteFromServer.tags.map((tag) => `#${tag}`).join(" "));
+        setEditTags(
+          updatedNoteFromServer.tags.map((tag) => `#${tag}`).join(" ")
+        );
       } else {
-        alert("error updating note")
+        alert("error updating note");
         console.error("Update failed:", response.statusText);
       }
     } catch (error) {
       console.error("Error updating note:", error);
     }
-  
+
     setIsEditing(false);
   };
-  
 
   return (
     <div className={styles.container}>

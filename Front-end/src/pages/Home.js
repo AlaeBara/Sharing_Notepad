@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import style from './Home.module.css';
-import Cart from '../components/Cart';
-import Header from '../components/Header';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import style from "./Home.module.css";
+import Cart from "../components/Cart";
+import Header from "../components/Header";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const [tags, setTags] = useState([]);
-  const [currentTag, setCurrentTag] = useState('');
+  const [currentTag, setCurrentTag] = useState("");
   const [notes, setNotes] = useState([]);
   const navigate = useNavigate();
 
   const handleAddTag = () => {
     if (currentTag.trim()) {
       setTags([...tags, currentTag.trim()]);
-      setCurrentTag('');
+      setCurrentTag("");
     }
   };
 
@@ -28,10 +28,10 @@ const Home = () => {
   };
 
   const resetForm = () => {
-    setTitle('');
-    setContent('');
+    setTitle("");
+    setContent("");
     setTags([]);
-    setCurrentTag('');
+    setCurrentTag("");
   };
 
   const closeModal = () => {
@@ -44,13 +44,17 @@ const Home = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/api/note/addnote', {
-        title,
-        content,
-        tags,
-      }, {
-        withCredentials: true,
-      });
+      const response = await axios.post(
+        "http://localhost:5000/api/note/addnote",
+        {
+          title,
+          content,
+          tags,
+        },
+        {
+          withCredentials: true,
+        }
+      );
 
       if (response.status === 201) {
         toast.success("Note added successfully!");
@@ -70,9 +74,12 @@ const Home = () => {
   // Fetch notes
   const fetchNotes = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/note/allnote' ,{
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        "http://localhost:5000/api/note/allnote",
+        {
+          withCredentials: true,
+        }
+      );
       setNotes(response.data.notes);
     } catch (error) {
       toast.error("Failed to fetch notes.");
@@ -93,13 +100,23 @@ const Home = () => {
   };
 
   const handleEdit = (id, title, content, tags) => {
-    console.log(`Edited card with id: ${id}, new title: ${title}, new content: ${content}, new tags: ${tags}`);
+    console.log(
+      `Edited card with id: ${id}, new title: ${title}, new content: ${content}, new tags: ${tags}`
+    );
   };
 
-  const handleDelete = (id) => {
-    console.log(`Deleted card with id: ${id}`);
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/note/deletenote/${id}`, {
+        withCredentials: true,
+      });
+      toast.success("Note deleted successfully!");
+      fetchNotes(); // Fetch notes again to update the list
+    } catch (error) {
+      toast.error("Failed to delete note.");
+      console.error(error);
+    }
   };
- 
 
   return (
     <>
@@ -126,9 +143,6 @@ const Home = () => {
         )}
       </div>
 
-
-
-
       <div className={style.container}>
         <button onClick={() => setShowModal(true)} className={style.addButton}>
           +
@@ -138,7 +152,12 @@ const Home = () => {
           <div className={style.modalOverlay}>
             <div className={style.modal}>
               <button onClick={closeModal} className={style.closeButton}>
-                <img width="24" height="24" src="https://img.icons8.com/quill/50/delete-sign.png" alt="close" />
+                <img
+                  width="24"
+                  height="24"
+                  src="https://img.icons8.com/quill/50/delete-sign.png"
+                  alt="close"
+                />
               </button>
 
               <h2 className={style.title}>Add Note</h2>
@@ -167,7 +186,12 @@ const Home = () => {
                   className={style.tagInputField}
                 />
                 <button onClick={handleAddTag} className={style.addTagButton}>
-                  <img width="24" height="24" src="https://img.icons8.com/quill/50/filled-plus-2-math.png" alt="add" />
+                  <img
+                    width="24"
+                    height="24"
+                    src="https://img.icons8.com/quill/50/filled-plus-2-math.png"
+                    alt="add"
+                  />
                 </button>
               </div>
 
@@ -175,14 +199,24 @@ const Home = () => {
                 {tags.map((tag, index) => (
                   <div key={index} className={style.tag}>
                     <span># {tag}</span>
-                    <button onClick={() => handleRemoveTag(index)} className={style.removeTagButton}>
-                      <img width="12" height="12" src="https://img.icons8.com/material-rounded/24/delete-sign.png" alt="remove" />
+                    <button
+                      onClick={() => handleRemoveTag(index)}
+                      className={style.removeTagButton}
+                    >
+                      <img
+                        width="12"
+                        height="12"
+                        src="https://img.icons8.com/material-rounded/24/delete-sign.png"
+                        alt="remove"
+                      />
                     </button>
                   </div>
                 ))}
               </div>
 
-              <button onClick={addNote} className={style.addNote}>Add</button>
+              <button onClick={addNote} className={style.addNote}>
+                Add
+              </button>
             </div>
           </div>
         )}
