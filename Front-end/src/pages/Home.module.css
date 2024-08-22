@@ -171,6 +171,13 @@
   font-weight: bold;
 }
 
+
+.noNotes{
+  text-align: center;
+  margin-top: 30vh;
+  font-family:"Nunito Sans", sans-serif;
+}
+
 @media (max-width: 600px) {
   .modal {
     padding: 1.5rem;

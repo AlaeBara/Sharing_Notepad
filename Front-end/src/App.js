@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      {!hideHeaderPaths.includes(location.pathname) && <Header />}
+      {!hideHeaderPaths.includes(location.pathname)}
       <main className='min-h-[calc(100vh-120px)]'>
         <Outlet />
       </main>

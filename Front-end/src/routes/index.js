@@ -3,6 +3,8 @@ import App from '../App'
 import Home from '../pages/Home'
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
+import ProtectedRoute from '../ProtectedRoute';
+
 const router=createBrowserRouter([
     {
         path : "/",
@@ -10,7 +12,11 @@ const router=createBrowserRouter([
         children : [
             {
                 path : "",
-                element : <Home/>
+                element: (
+                    <ProtectedRoute>
+                      <Home />
+                    </ProtectedRoute>
+                ),
                 
             },
             {
