@@ -1,40 +1,65 @@
+// Your Card component
 import { useState } from "react";
 import { BsFillPinAngleFill } from "react-icons/bs";
 import { IoMdShareAlt } from "react-icons/io";
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
 import styles from "./Cart.module.css";
 
-const Card = ({
-  id,
-  title,
-  content,
-  date,
-  tags,
-  onPin,
-  onShare,
-  onEdit,
-  onDelete,
-}) => {
+const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(title);
   const [editContent, setEditContent] = useState(content);
-  const [editTags, setEditTags] = useState(tags.map(tag => `#${tag}`).join(' ')); // Format tags for editing
+  const [editTags, setEditTags] = useState(
+    tags.map((tag) => `#${tag}`).join(" ")
+  );
 
   const handleEditClick = () => {
-    if (isEditing) {
-      // Convert formatted tags back to an array
-      const updatedTags = editTags
-        .split(' ')
-        .map(tag => tag.replace(/^#/, '').trim())
-        .filter(tag => tag); // Remove empty strings
-      onEdit(id, editTitle, editContent, updatedTags);
-    }
     setIsEditing(!isEditing);
+  };
+
+  const handleUpdateClick = async () => {
+    const updatedTags = editTags
+      .split(" ")
+      .map((tag) => tag.replace(/^#/, "").trim())
+      .filter((tag) => tag);
+
+    const updatedNote = {
+      title: editTitle,
+      content: editContent,
+      tags: updatedTags,
+    };
+
+    try {
+      const response = await fetch(`http://localhost:5000/notes/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+          withCredentials: true
+        ,
+        body: JSON.stringify(updatedNote),
+      });
+
+      if (response.ok) {
+        const updatedNoteFromServer = await response.json();
+        console.log("Update successful:", updatedNoteFromServer);
+        // Update the UI with the updated note data
+      } else {
+        console.error("Update failed:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error updating note:", error);
+    }
+
+    setIsEditing(false); // Exit edit mode after updating
   };
 
   return (
     <div className={styles.container}>
-      <BsFillPinAngleFill className={styles.pinIcon} onClick={() => onPin(id)} />
+      <BsFillPinAngleFill
+        className={styles.pinIcon}
+        onClick={() => onPin(id)}
+      />
       {isEditing ? (
         <div className={styles.editContent}>
           <br />
@@ -53,6 +78,9 @@ const Card = ({
             onChange={(e) => setEditTags(e.target.value)}
           />
           <br />
+          <button className={styles.UpdateButton} onClick={handleUpdateClick}>
+            Update
+          </button>
           <br />
         </div>
       ) : (
@@ -61,9 +89,7 @@ const Card = ({
           <div className={styles.content}>
             <h3 className={styles.date}>{date}</h3>
             <p>{content}</p>
-            <h4>
-              {tags.map(tag => `#${tag}`).join(' ')} {/* Format tags for display */}
-            </h4>
+            <h4>{tags.map((tag) => `#${tag}`).join(" ")}</h4>
           </div>
         </div>
       )}

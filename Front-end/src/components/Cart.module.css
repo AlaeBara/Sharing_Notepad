@@ -65,7 +65,8 @@
 .editContent {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  align-items: center; /* Center elements horizontally */
+  justify-content: center; /* Center elements vertically */
 }
 
 .editContent input,
@@ -100,7 +101,18 @@
 .iconsNote svg:hover {
   color: #35ac4d;
 }
-
+.UpdateButton {
+  background-color: #35ac4d;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 40%;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
