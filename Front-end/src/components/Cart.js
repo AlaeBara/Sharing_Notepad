@@ -1,4 +1,3 @@
-// Your Card component
 import { useState } from "react";
 import { BsFillPinAngleFill } from "react-icons/bs";
 import { IoMdShareAlt } from "react-icons/io";
@@ -35,15 +34,19 @@ const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
         headers: {
           "Content-Type": "application/json",
         },
-          withCredentials: true
-        ,
         body: JSON.stringify(updatedNote),
       });
 
       if (response.ok) {
         const updatedNoteFromServer = await response.json();
         console.log("Update successful:", updatedNoteFromServer);
-        // Update the UI with the updated note data
+
+        // Update the state with the new data
+        setEditTitle(updatedNoteFromServer.note.title);
+        setEditContent(updatedNoteFromServer.note.content);
+        setEditTags(
+          updatedNoteFromServer.note.tags.map((tag) => `#${tag}`).join(" ")
+        );
       } else {
         console.error("Update failed:", response.statusText);
       }
@@ -85,11 +88,11 @@ const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
         </div>
       ) : (
         <div className={styles.displayContent}>
-          <h1>{title}</h1>
+          <h1>{editTitle}</h1>
           <div className={styles.content}>
             <h3 className={styles.date}>{date}</h3>
-            <p>{content}</p>
-            <h4>{tags.map((tag) => `#${tag}`).join(" ")}</h4>
+            <p>{editContent}</p>
+            <h4>{editTags}</h4>
           </div>
         </div>
       )}
