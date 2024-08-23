@@ -91,9 +91,6 @@ const Home = () => {
     fetchNotes();
   }, []);
 
-  const handlePin = (id) => {
-    console.log(`Pinned card with id: ${id}`);
-  };
 
   const handleShare = (id) => {
     console.log(`Shared card with id: ${id}`);
@@ -111,9 +108,23 @@ const Home = () => {
         withCredentials: true,
       });
       toast.success("Note deleted successfully!");
-      fetchNotes(); // Fetch notes again to update the list
+      fetchNotes();
     } catch (error) {
       toast.error("Failed to delete note.");
+      console.error(error);
+    }
+  };
+
+
+  const handlePin = async (id) => {
+    try {
+      await axios.put(`http://localhost:5000/api/note/pinnote/${id}`,{}, {
+        withCredentials: true,
+      });
+      toast.success("Note Pinned successfully!");
+      fetchNotes();
+    } catch (error) {
+      toast.error("Failed to Pinned note.");
       console.error(error);
     }
   };
@@ -126,17 +137,18 @@ const Home = () => {
         {notes.length > 0 ? (
           notes.map((cardData) => (
             <Cart
-              key={cardData._id}
-              id={cardData._id}
-              title={cardData.title}
-              content={cardData.content}
-              date={cardData.createdAt}
-              tags={cardData.tags}
-              onPin={() => handlePin(cardData._id)}
-              onShare={() => handleShare(cardData._id)}
-              onEdit={() => handleEdit(cardData._id)}
-              onDelete={() => handleDelete(cardData._id)}
-            />
+            key={cardData._id}
+            id={cardData._id}
+            title={cardData.title}
+            content={cardData.content}
+            date={cardData.createdAt}
+            tags={cardData.tags}
+            pinned={cardData.pinned}  // Pass the pinned status
+            onPin={() => handlePin(cardData._id)}
+            onShare={() => handleShare(cardData._id)}
+            onEdit={() => handleEdit(cardData._id)}
+            onDelete={() => handleDelete(cardData._id)}
+          />
           ))
         ) : (
           <h2 className={style.noNotes}>No notes available</h2>

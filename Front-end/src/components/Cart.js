@@ -1,11 +1,12 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { BsFillPinAngleFill } from "react-icons/bs";
+import { GrPin } from "react-icons/gr";
 import { IoMdShareAlt } from "react-icons/io";
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
 import styles from "./Cart.module.css";
 import axios from "axios";
 
-const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
+const Cart = ({ id, title, content, date, tags, pinned, onPin, onShare, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(title);
   const [editContent, setEditContent] = useState(content);
@@ -43,14 +44,13 @@ const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
         const { note: updatedNoteFromServer } = response.data;
         console.log("Update successful:", updatedNoteFromServer);
 
-        // Update the state with the new data
         setEditTitle(updatedNoteFromServer.title);
         setEditContent(updatedNoteFromServer.content);
         setEditTags(
           updatedNoteFromServer.tags.map((tag) => `#${tag}`).join(" ")
         );
       } else {
-        alert("error updating note");
+        alert("Error updating note");
         console.error("Update failed:", response.statusText);
       }
     } catch (error) {
@@ -62,10 +62,13 @@ const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
 
   return (
     <div className={styles.container}>
-      <BsFillPinAngleFill
-        className={styles.pinIcon}
-        onClick={() => onPin(id)}
-      />
+      {/* Conditionally render pin icon */}
+      {pinned ? (
+        <BsFillPinAngleFill className={styles.pinIcon} onClick={() => onPin(id)} />
+      ) : (
+        <GrPin className={styles.pinIcon} onClick={() => onPin(id)} />
+      )}
+
       {isEditing ? (
         <div className={styles.editContent}>
           <br />
@@ -99,6 +102,7 @@ const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
           </div>
         </div>
       )}
+
       <div className={styles.iconsNote}>
         <IoMdShareAlt onClick={() => onShare(id)} />
         <MdModeEditOutline onClick={handleEditClick} />
@@ -108,4 +112,4 @@ const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
   );
 };
 
-export default Card;
+export default Cart;
