@@ -121,7 +121,7 @@ const Home = () => {
       await axios.put(`http://localhost:5000/api/note/pinnote/${id}`,{}, {
         withCredentials: true,
       });
-      toast.success("Note Pinned successfully!");
+      // toast.success("Note Pinned successfully!");
       fetchNotes();
     } catch (error) {
       toast.error("Failed to Pinned note.");
