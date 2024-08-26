@@ -4,7 +4,8 @@ const {
   GetNotes,
   UpdateNote,
   DeleteNote,
-  PinNote
+  PinNote,
+  ShareNote
 } = require("../Controller/Notee");
 const { jwtMiddleware } = require("../Middelwares/Jwt");
 
@@ -20,6 +21,8 @@ router.delete("/deletenote/:id", jwtMiddleware, DeleteNote);
 router.get("/allnote", jwtMiddleware, GetNotes);
 //Route for Pin note
 router.put("/pinnote/:id", jwtMiddleware, PinNote);
+//Route for Share ote
+router.post("/sharenote/:id", jwtMiddleware,  ShareNote);
 
 
 module.exports = router;

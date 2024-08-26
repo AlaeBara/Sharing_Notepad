@@ -67,7 +67,7 @@
   flex-direction: column;
   align-items: center; /* Center elements horizontally */
   justify-content: center; /* Center elements vertically */
-  margin-top: 10px;
+  margin: 30px 0;
 }
 
 .editContent input,
@@ -114,7 +114,8 @@
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
   width: 40%;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 15px;
 }
 .shareContent {
   display: flex;
