@@ -29,13 +29,36 @@ const AddNote = async (req, res) => {
 };
 
 
-//for get all notes:
 const GetNotes = async (req, res) => {
   try {
-    const notes = await Note.find({ user: req.user.user._id })
-      .sort({ pinned: -1, updatedAt: -1 });
+    const personalNotes = await Note.find({ user: req.user.user._id })
+      .sort({ pinned: -1, updatedAt: -1 })
+      .lean(); // Convert to plain JavaScript object
 
-    res.status(200).json({ notes, message: "Notes retrieved successfully!" });
+    const sharedNotes = await SharedNote.find({ sharedWithUsers: req.user.user.email })
+      .populate('noteId')
+      .sort({ sharedAt: -1 });
+
+    const combinedNotes = [
+      ...personalNotes.map(note => ({
+        ...note,
+        isPersonal: true,  // Indicate this is a personal note
+        isShared: false
+      })),
+      ...sharedNotes.map(shared => ({
+        ...shared.noteId.toObject(),
+        isPersonal: false,
+        isShared: true,
+        sharedBy: shared.sharedByUser
+      }))
+    ].sort((a, b) => {
+      if (a.pinned === b.pinned) {
+        return b.updatedAt - a.updatedAt;
+      }
+      return b.pinned ? 1 : -1;
+    });
+
+    res.status(200).json({ notes: combinedNotes, message: "Notes retrieved successfully!" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error retrieving notes. Please try again later." });
