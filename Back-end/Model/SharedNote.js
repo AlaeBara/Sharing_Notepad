@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 
 const sharedNoteSchema = new mongoose.Schema({
-  note: {
+  noteId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Note',
     required: true,
   },
 
   sharedWithUsers: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    type: String, 
     required: true,
   }],
 

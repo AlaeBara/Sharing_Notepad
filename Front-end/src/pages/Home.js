@@ -92,9 +92,6 @@ const Home = () => {
   }, []);
 
 
-  const handleShare = (id) => {
-    console.log(`Shared card with id: ${id}`);
-  };
 
   const handleEdit = (id, title, content, tags) => {
     console.log(
@@ -145,7 +142,6 @@ const Home = () => {
             tags={cardData.tags}
             pinned={cardData.pinned}  // Pass the pinned status
             onPin={() => handlePin(cardData._id)}
-            onShare={() => handleShare(cardData._id)}
             onEdit={() => handleEdit(cardData._id)}
             onDelete={() => handleDelete(cardData._id)}
           />

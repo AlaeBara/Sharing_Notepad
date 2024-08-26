@@ -1,4 +1,6 @@
 const Note = require("../Model/Note");
+const SharedNote = require('../Model/SharedNote')
+const User = require('../Model/User')
 
 
 //for create New Note:
@@ -124,4 +126,57 @@ const PinNote = async (req, res) => {
 
 
 
-module.exports = { AddNote, GetNotes, UpdateNote, DeleteNote, PinNote  };
+//for Share a Note:
+
+const ShareNote = async (req, res) => {
+  try {
+    const noteId = req.params.id; 
+    const { shareEmail } = req.body;
+    console.log('Received shareEmail:', shareEmail);
+    const sharedByUser = req.user.user._id;
+
+  
+    const trimmedEmail = shareEmail.trim();
+
+    // Find existing shared note or create a new one
+    let sharedNote = await SharedNote.findOne({ noteId });
+
+    if (sharedNote) {
+      // If the note is already shared, add the new email if it doesn't exist
+      if (!sharedNote.sharedWithUsers.includes(shareEmail)) {
+        sharedNote.sharedWithUsers.push(shareEmail);
+      } else {
+        return res.status(400).json({ message: "This note is already shared with this email." });
+      }
+    } else {
+      // If the note isn't shared yet, create a new SharedNote document
+      sharedNote = new SharedNote({
+        noteId,
+        sharedWithUsers: [shareEmail],
+        sharedByUser,
+        sharedAt: formatDate(new Date()),
+      });
+    }
+
+    // Save the shared note document
+    await sharedNote.save();
+
+    // Send success response
+    res.status(200).json({ message: "Note shared successfully!", sharedNote });
+  } catch (error) {
+    console.error("Error sharing note:", error);
+    res.status(500).json({ message: "An error occurred while sharing the note." });
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+module.exports = { AddNote, GetNotes, UpdateNote, DeleteNote, PinNote,ShareNote  };
