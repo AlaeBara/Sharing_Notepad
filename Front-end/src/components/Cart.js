@@ -1,21 +1,28 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { BsFillPinAngleFill } from "react-icons/bs";
-import { GrPin } from "react-icons/gr";
 import { IoMdShareAlt } from "react-icons/io";
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
 import styles from "./Cart.module.css";
 import axios from "axios";
 
-const Cart = ({ id, title, content, date, tags, pinned, onPin, onShare, onDelete }) => {
+const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [isSharing, setIsSharing] = useState(false);
   const [editTitle, setEditTitle] = useState(title);
   const [editContent, setEditContent] = useState(content);
+  const [shareEmails, setShareEmails] = useState("");
   const [editTags, setEditTags] = useState(
     tags.map((tag) => `#${tag}`).join(" ")
   );
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
+    if (isSharing) setIsSharing(false); 
+  };
+
+  const handleshareClick = () => {
+    setIsSharing(!isSharing);
+    if (isEditing) setIsEditing(false); 
   };
 
   const handleUpdateClick = async () => {
@@ -44,13 +51,14 @@ const Cart = ({ id, title, content, date, tags, pinned, onPin, onShare, onDelete
         const { note: updatedNoteFromServer } = response.data;
         console.log("Update successful:", updatedNoteFromServer);
 
+        // Update the state with the new data
         setEditTitle(updatedNoteFromServer.title);
         setEditContent(updatedNoteFromServer.content);
         setEditTags(
           updatedNoteFromServer.tags.map((tag) => `#${tag}`).join(" ")
         );
       } else {
-        alert("Error updating note");
+        alert("error updating note");
         console.error("Update failed:", response.statusText);
       }
     } catch (error) {
@@ -62,16 +70,24 @@ const Cart = ({ id, title, content, date, tags, pinned, onPin, onShare, onDelete
 
   return (
     <div className={styles.container}>
-      {/* Conditionally render pin icon */}
-      {pinned ? (
-        <BsFillPinAngleFill className={styles.pinIcon} onClick={() => onPin(id)} />
-      ) : (
-        <GrPin className={styles.pinIcon} onClick={() => onPin(id)} />
+      <BsFillPinAngleFill
+        className={styles.pinIcon}
+        onClick={() => onPin(id)}
+      />
+
+      {!isEditing && !isSharing && (
+        <div className={styles.displayContent}>
+          <h1>{editTitle}</h1>
+          <div className={styles.content}>
+            <h3 className={styles.date}>{date}</h3>
+            <p>{editContent}</p>
+            <h4>{editTags}</h4>
+          </div>
+        </div>
       )}
 
-      {isEditing ? (
+      {isEditing && (
         <div className={styles.editContent}>
-          <br />
           <input
             type="text"
             value={editTitle}
@@ -86,25 +102,26 @@ const Cart = ({ id, title, content, date, tags, pinned, onPin, onShare, onDelete
             value={editTags}
             onChange={(e) => setEditTags(e.target.value)}
           />
-          <br />
           <button className={styles.UpdateButton} onClick={handleUpdateClick}>
             Update
           </button>
-          <br />
         </div>
-      ) : (
-        <div className={styles.displayContent}>
-          <h1>{editTitle}</h1>
-          <div className={styles.content}>
-            <h3 className={styles.date}>{date}</h3>
-            <p>{editContent}</p>
-            <h4>{editTags}</h4>
-          </div>
+      )}
+
+      {isSharing && (
+        <div className={styles.shareContent}>
+          <input
+            type="text"
+            placeholder="Enter email"
+            value={shareEmails}
+            onChange={(e) => setShareEmails(e.target.value)}
+          />
+          <button onClick={handleshareClick}>Share</button>
         </div>
       )}
 
       <div className={styles.iconsNote}>
-        <IoMdShareAlt onClick={() => onShare(id)} />
+        <IoMdShareAlt onClick={handleshareClick} />
         <MdModeEditOutline onClick={handleEditClick} />
         <MdDelete onClick={() => onDelete(id)} />
       </div>
@@ -112,4 +129,4 @@ const Cart = ({ id, title, content, date, tags, pinned, onPin, onShare, onDelete
   );
 };
 
-export default Cart;
+export default Card;
