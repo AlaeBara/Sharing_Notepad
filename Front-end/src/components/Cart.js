@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { BsFillPinAngleFill } from "react-icons/bs";
+import { GrPin } from "react-icons/gr";
 import { IoMdShareAlt } from "react-icons/io";
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
 import styles from "./Cart.module.css";
 import axios from "axios";
-
-const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
+const Card = ({ id, title, content, date, tags, pinned, onPin, onShare, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
   const [editTitle, setEditTitle] = useState(title);
@@ -17,12 +17,12 @@ const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
-    if (isSharing) setIsSharing(false); 
+    if (isSharing) setIsSharing(false); // Close sharing if editing is toggled
   };
 
   const handleshareClick = () => {
     setIsSharing(!isSharing);
-    if (isEditing) setIsEditing(false); 
+    if (isEditing) setIsEditing(false); // Close editing if sharing is toggled
   };
 
   const handleUpdateClick = async () => {
@@ -70,10 +70,12 @@ const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
 
   return (
     <div className={styles.container}>
-      <BsFillPinAngleFill
-        className={styles.pinIcon}
-        onClick={() => onPin(id)}
-      />
+      {/* Conditionally render pin icon */}
+      {pinned ? (
+        <BsFillPinAngleFill className={styles.pinIcon} onClick={() => onPin(id)} />
+      ) : (
+        <GrPin className={styles.pinIcon} onClick={() => onPin(id)} />
+      )}
 
       {!isEditing && !isSharing && (
         <div className={styles.displayContent}>
@@ -112,7 +114,7 @@ const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
         <div className={styles.shareContent}>
           <input
             type="text"
-            placeholder="Enter email"
+            placeholder="Enter emails"
             value={shareEmails}
             onChange={(e) => setShareEmails(e.target.value)}
           />
@@ -130,3 +132,31 @@ const Card = ({ id, title, content, date, tags, onPin, onShare, onDelete }) => {
 };
 
 export default Card;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
