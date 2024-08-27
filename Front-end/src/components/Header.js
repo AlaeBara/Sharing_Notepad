@@ -8,19 +8,23 @@ import styles from "./Header.module.css";
 import notificationIcon from "../assest/Notification_icon.png";
 
 const Header = () => {
-  const [showNotifications, setShowNotifications] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false); // Toggle notifications
   const navigate = useNavigate();
+
+  // Sample shared notes with user information
   const [sharedNotes, setSharedNotes] = useState([
     {
       id: 1,
       title: "Note Title 1",
       content: "This is the content of Note 1",
+      sharedBy: "Alice", // User who shared the note
       accepted: null,
     },
     {
       id: 2,
       title: "Note Title 2",
       content: "This is the content of Note 2",
+      sharedBy: "Bob", // User who shared the note
       accepted: null,
     },
   ]);
@@ -49,13 +53,12 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.get('http://localhost:5000/api/auth/logout', {
+      await axios.get("http://localhost:5000/api/auth/logout", {
         withCredentials: true,
       });
-      // Redirect to login page after successful logout
-      navigate('/login');
+      navigate("/login"); // Redirect to login page after successful logout
     } catch (error) {
-      console.error('Logout failed:', error);
+      console.error("Logout failed:", error);
     }
   };
 
@@ -98,7 +101,10 @@ const Header = () => {
                 <h3>Shared Notes</h3>
                 {sharedNotes.map((note) => (
                   <div key={note.id} className={styles.notificationItem}>
-                    <span>{note.title}</span>
+                    <span>
+                      <strong>{note.sharedBy}</strong> shared a note:{" "}
+                      {note.title}
+                    </span>
                     <div className={styles.buttonContainer}>
                       <button
                         onClick={() => handleAccept(note.id)}

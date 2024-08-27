@@ -2,9 +2,10 @@
   height: 5rem;
   background-color: #ffffff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  /* position: sticky; */
   top: 0;
   z-index: 1000;
+  width: 100%; /* Ensures header spans the full width */
+  position: sticky; /* Makes the header stick to the top when scrolling */
 }
 
 .headerContainer {
@@ -15,12 +16,13 @@
   justify-content: space-between;
   max-width: 1400px;
   margin: 0 auto;
-  flex-wrap: wrap; /* Added for better wrapping */
+  flex-wrap: wrap; /* Keeps the layout flexible and responsive */
 }
 
 .logoLink {
   display: block;
   transition: transform 0.3s ease;
+  cursor: pointer; /* Improves user experience by indicating it's clickable */
 }
 
 .logoLink:hover {
@@ -28,7 +30,7 @@
 }
 
 .searchBarLg {
-  display: none;
+  display: none; /* Initially hidden, only shown on larger screens */
 }
 
 .userActions {
@@ -59,6 +61,7 @@
   transition: background-color 0.3s ease, transform 0.3s ease,
     box-shadow 0.3s ease;
   text-decoration: none;
+  cursor: pointer; /* Indicates it's clickable */
 }
 
 .logoutLink:hover {
@@ -78,29 +81,49 @@
 
 .notificationPopup {
   position: absolute;
-  top: 4rem;
+  top: 6rem;
   right: 2rem;
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  min-width: 200px;
+  border-radius: 8px; /* Increased border radius for a more rounded look */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Softer shadow for a floating effect */
+  padding: 1.5rem; /* Increased padding for more space inside the popup */
+  min-width: 320px; /* Slightly wider to accommodate content better */
   z-index: 1001;
+  animation: fadeIn 0.3s ease-out; /* Added fade-in animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .popupContent h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+  margin-bottom: 1rem; /* Increased space below the heading */
+  font-size: 1.25rem; /* Slightly larger font size */
   color: #333;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0; /* Added bottom border to separate heading */
 }
 
 .notificationItem {
-  padding: 0.5rem 0;
+  padding: 1rem 0; /* More padding for better spacing */
   border-bottom: 1px solid #e0e0e0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.notificationItem:hover {
+  background-color: #f9f9f9; /* Light background color on hover */
 }
 
 .notificationItem:last-child {
@@ -116,11 +139,13 @@
 .buttonContainer {
   display: flex;
   gap: 0.5rem;
+  justify-content: flex-end;
+  padding-left: 10px; /* Align buttons to the right */
 }
 
 .acceptButton,
 .declineButton {
-  padding: 0.3rem 0.6rem;
+  padding: 0.5rem 0.8rem; /* Increased padding for better touch targets */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -193,9 +218,10 @@
 
 @media (max-width: 767px) {
   .header {
-    margin-bottom: 20vh;
+    margin-bottom: 20vh; /* Leaves space below the header */
     position: relative;
   }
+
   .headerContainer {
     flex-wrap: wrap;
     justify-content: center;
