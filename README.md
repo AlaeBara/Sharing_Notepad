@@ -1,6 +1,6 @@
 # 📝 Projet: Développement du bloc notes avec option de partage front-end
 
-Le but de ce projet est de développer l'interface utilisateur pour le partage de notes spécifiques, définies dans une durée de **7 jours**.
+Le but de ce projet est de développer l'interface utilisateur pour le partage de notes spécifiques, définies dans une durée de **28 jours**.
 
 ## 📐 Prototypage & User Flow
 
