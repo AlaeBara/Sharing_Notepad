@@ -1,6 +1,27 @@
 # 📝 Projet: Développement du bloc notes avec option de partage front-end/back-end
 
-![Capture d’écran (91)](https://github.com/user-attachments/assets/68799449-371c-4542-9967-a47a5fd70a89)
+![login](https://github.com/user-attachments/assets/87bc9ffc-3717-4137-b8ab-db81511ab1af)
+
+![signup](https://github.com/user-attachments/assets/b5ba01f2-b61b-4a22-b464-c9a39e00ef7c)
+
+![home](https://github.com/user-attachments/assets/3d464b5c-e763-4246-9e9b-3e5f291a778e)
+
+![addnote](https://github.com/user-attachments/assets/95cf092c-8ad3-4f49-9da9-0c40ed21f9a3)
+
+![notes](https://github.com/user-attachments/assets/2a481882-48a8-4310-a520-9d12f004f757)
+
+![updatenote](https://github.com/user-attachments/assets/c8304885-bed2-43b9-b384-17a5990c0d81)
+
+![sharenote](https://github.com/user-attachments/assets/f45b2069-b0b3-4d4b-91ca-2e2b8a4f648d)
+
+![notificationpage](https://github.com/user-attachments/assets/7ed422bb-8bd6-4cfe-aff2-e100d727b26c)
+
+
+
+
+
+
+
 
 
 Le but de ce projet est de développer l'interface utilisateur pour le partage de notes spécifiques, définies dans une durée de **28 jours**.
