@@ -38,12 +38,14 @@ Pour plus de détails, veuillez consulter l'image **Prototypage&Userflow.png**.
 - 🔘 **Bouton Ajouter**
 
   ### Carte Notification
-  -
+  -**Nom**
+  -**Titre de note**
+  -**Bouton d'acceptation et de refusation**
 
-## 🗂️ Définition de tableau Kanban
-
-Pour plus de détails, veuillez consulter l'image **KanbanNotes.png**.
-
+  ### Carte Partager###
+  -**Email**
+  -**Boutton Share**
+  
 ## 🔄 Définition des Daily Stand Up
 
 Pour assurer une bonne communication entre les membres de l'équipe avec limitation des tâches en cours.
@@ -54,20 +56,25 @@ Pour assurer une bonne communication entre les membres de l'équipe avec limitat
 - Design et structure des pages
 - Création des pages de connexion
 - Front-end : Inscription, Connexion et En-tête
+- Création de Carte partager
+- Front-end : Carte Share
+- Back-end:  Add Note
 
 ### 🎨 **Asmae Lhroub**
 - Création des cartes
-- Front-end : page d'accueil, carte d'ajout
+- Front-end : page d'accueil, carte d'ajout, carte notification
+- -Back-end : Update card
+  
 
 ### 📝 **Younes Idoulhiane**
 - Documentation
-- Notification Card
-- Testing
+- Back-end : Notification Card, Delete Card
+-
 
 ### ⚙️ **Alae eddin Bara**
 - Configuration de l'environnement GitHub
-- Collaboration avec Asmae pour créer la page d'accueil
-- Collaboration avec Asmae pour créer la carte d'ajout
+- Collaboration avec Asmae pour créer la page d'accueil, la carte d'ajout
+- Back-end : login,Signup,edit card,share card
 
 ## 🛠️ Outils
 
