@@ -4,7 +4,7 @@
 
 
 body {
-  background-color: #ffebbb;
+  background-color: white;
   margin: 0;
   padding: 0;
 }
@@ -171,7 +171,7 @@ body {
 .addNote {
   background-color:  #407088;
   font: bold;
-  color:  #ffcbcb;;
+  color:  white;
   padding: 0.75rem 1rem;
   border: 1px solid #ffcbcb;
   border-radius: 5px;
