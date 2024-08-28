@@ -37,44 +37,42 @@ Pour plus de détails, veuillez consulter l'image **Prototypage&Userflow.png**.
 - ➕ **Ajouter des tags** avec le bouton +
 - 🔘 **Bouton Ajouter**
 
-  ### Carte Notification
-  -**Nom**
-  -**Titre de note**
-  -**Bouton d'acceptation et de refusation**
+### 📢 Carte Notification
+- **Nom**
+- **Titre de note**
+- ✅ **Bouton d'acceptation** et ❌ **Bouton de refus**
 
-  ### Carte Partager###
-  -**Email**
-  -**Boutton Share**
-  
+### 📤 Carte Partager
+- **Email**
+- 📧 **Bouton Share**
+
 ## 🔄 Définition des Daily Stand Up
 
 Pour assurer une bonne communication entre les membres de l'équipe avec limitation des tâches en cours.
 
 ## 🔧 Fonctionnalités
 
-### 🖌️ **Amina Ahllal**
-- Design et structure des pages
-- Création des pages de connexion
-- Front-end : Inscription, Connexion et En-tête
-- Création de Carte partager
-- Front-end : Carte Share
-- Back-end:  Add Note
+### 🎨 **Amina Ahllal**
+- 🎨 Design et structure des pages
+- 📝 Création des pages de connexion
+- 🎨 Front-end : Inscription, Connexion et En-tête
+- 🗂️ Création de Carte Partager
+- 🎨 Front-end : Carte Share
+- 🛠️ Back-end : Add Note
 
 ### 🎨 **Asmae Lhroub**
-- Création des cartes
-- Front-end : page d'accueil, carte d'ajout, carte notification
-- -Back-end : Update card
-  
+- 🗂️ Création des cartes
+- 🎨 Front-end : page d'accueil, carte d'ajout, carte notification
+- 🛠️ Back-end : Update Card
 
-### 📝 **Younes Idoulhiane**
-- Documentation
-- Back-end : Notification Card, Delete Card
--
+### ✍️ **Younes Idoulhiane**
+- 📄 Documentation
+- 🛠️ Back-end : Notification Card, Delete Card
 
 ### ⚙️ **Alae eddin Bara**
-- Configuration de l'environnement GitHub
-- Collaboration avec Asmae pour créer la page d'accueil, la carte d'ajout
-- Back-end : login,Signup,edit card,share card
+- ⚙️ Configuration de l'environnement GitHub
+- 🤝 Collaboration avec Asmae pour créer la page d'accueil, la carte d'ajout
+- 🛠️ Back-end : Login, Signup, Edit Card, Share Card
 
 ## 🛠️ Outils
 
@@ -83,10 +81,7 @@ Pour assurer une bonne communication entre les membres de l'équipe avec limitat
 - 🎨 **CSS**
 - 🚀 **react-router-dom**
 - ⚙️ **react-dom/client**
-- 🖌️ **react-icons/fa**
-- 🖌️ **react-icons/gr**
+- 🎨 **react-icons/fa**
+- 🎨 **react-icons/gr**
 - 📦 **@import**
 - 📱 **@media**
-
----
-
