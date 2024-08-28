@@ -1,4 +1,7 @@
-# 📝 Projet: Développement du bloc notes avec option de partage front-end
+# 📝 Projet: Développement du bloc notes avec option de partage front-end/back-end
+
+![Capture d’écran (91)](https://github.com/user-attachments/assets/68799449-371c-4542-9967-a47a5fd70a89)
+
 
 Le but de ce projet est de développer l'interface utilisateur pour le partage de notes spécifiques, définies dans une durée de **28 jours**.
 
