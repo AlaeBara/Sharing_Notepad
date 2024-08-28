@@ -72,7 +72,10 @@ Pour assurer une bonne communication entre les membres de l'équipe avec limitat
 ### ⚙️ **Alae eddin Bara**
 - ⚙️ Configuration de l'environnement GitHub
 - 🤝 Collaboration avec Asmae pour créer la page d'accueil, la carte d'ajout
-- 🛠️ Back-end : Login, Signup, Edit Card, Share Card
+- 🛠️ Back-end : Login
+- 🛠️Back-end : Signup
+- 🛠️Back-end : Edit Card
+- 🛠️Back-end : Share Card
 
 ## 🛠️ Outils
 
