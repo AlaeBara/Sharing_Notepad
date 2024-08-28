@@ -66,8 +66,7 @@
   border-radius: 4px;
   font-size: 1rem;
   transition: border-color 0.3s ease;
-  border: 3px solid  #132743; 
-  border-radius: 20px;
+  border: 1px solid  #132743; 
 }
 
 .input:focus {
@@ -93,7 +92,7 @@
 
 .signUpButton {
   background-color: #407088;
-  color: #ffcab0;
+  color: white;
   padding: 0.75rem 1.5rem;
   border: none;
   font-size: 1rem;
