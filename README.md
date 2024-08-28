@@ -1,17 +1,10 @@
 # 📝 Projet: Développement du bloc notes avec option de partage front-end
 
-Le but de ce projet est de développer l'interface utilisateur pour le partage de notes spécifiques, définies dans une durée de **7 jours**.
+Le but de ce projet est de développer l'interface utilisateur pour le partage de notes spécifiques, définies dans une durée de **28 jours**.
 
 ## 📐 Prototypage & User Flow
 
 Pour plus de détails, veuillez consulter l'image **Prototypage&Userflow.png**.
-
-![KanbanNotes](https://github.com/user-attachments/assets/995cc059-4299-4455-84ee-2bdfa1dcdca6)
-
-![PrototypageUserflow](https://github.com/user-attachments/assets/51f2e462-b70d-4d4d-bfca-87a14f144b9c)
-
-
-
 
 ## 📄 Page & Contenu
 
@@ -43,6 +36,9 @@ Pour plus de détails, veuillez consulter l'image **Prototypage&Userflow.png**.
 - 🏷️ **Tags**
 - ➕ **Ajouter des tags** avec le bouton +
 - 🔘 **Bouton Ajouter**
+
+  ### Carte Notification
+  -
 
 ## 🗂️ Définition de tableau Kanban
 
