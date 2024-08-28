@@ -3,6 +3,12 @@
 
 
 
+body {
+  background-color: #ffebbb;
+  margin: 0;
+  padding: 0;
+}
+
 .yourNote {
   display: flex;
   justify-content: center;
@@ -37,10 +43,10 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  border: none;
+  border: 1px solid black;
   cursor: pointer;
-  background-color: #35ac4d;
-  color: white;
+  background-color:  #407088;
+  color: #e0ffcd;
   position: fixed;
   right: 5%;
   bottom: 10%;
@@ -80,6 +86,8 @@
   font-family: 'Carter One', system-ui;
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  color: #132743;
+  
 }
 
 .closeButton {
@@ -96,7 +104,7 @@
   padding: 0.75rem;
   margin-bottom: 1rem;
   border-radius: 5px;
-  border: 1px solid #ddd;
+  border: 1px solid #ffcbcb;
   font-family: 'Rubik', sans-serif;
 }
 
@@ -110,13 +118,14 @@
   align-items: center;
   width: 100%;
   margin-bottom: 1rem;
+  
 }
 
 .tagInputField {
   flex: 1;
   padding: 0.5rem;
   border-radius: 5px;
-  border: 1px solid #ddd;
+  border: 1px solid #ffcbcb;
   font-family: 'Rubik', sans-serif;
 }
 
@@ -160,23 +169,25 @@
 }
 
 .addNote {
-  background-color: #35ac4d;
-  color: white;
+  background-color:  #407088;
+  font: bold;
+  color:  #ffcbcb;;
   padding: 0.75rem 1rem;
-  border: none;
+  border: 1px solid #ffcbcb;
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
   font-family: 'Rubik', sans-serif;
   font-weight: bold;
+  font-size: 17px;
 }
 
-
-.noNotes{
-  text-align: center;
-  margin-top: 30vh;
-  font-family:"Nunito Sans", sans-serif;
+.imgnote{
+  margin:20px;
+  padding: 100px;
+ 
 }
+
 
 @media (max-width: 600px) {
   .modal {

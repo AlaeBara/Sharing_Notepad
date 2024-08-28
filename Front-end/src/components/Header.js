@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Logo from "./Logo";
-import { GrSearch } from "react-icons/gr";
+import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import notificationIcon from "../assest/Notification_icon.png";
@@ -64,7 +64,7 @@ const Header = () => {
       <div className={styles.headerContainer}>
         <div className={styles.logoLink}>
           <Link to={"/"}>
-            <Logo w={120} h={70} />
+            <Logo w={130} h={80} />
           </Link>
         </div>
         <div className={styles.searchBarLg}>
@@ -74,7 +74,7 @@ const Header = () => {
             className={styles.searchInput}
           />
           <button className={styles.searchButton}>
-            <GrSearch />
+          <FaSearch />
           </button>
         </div>
         <div className={styles.userActions}>
@@ -88,8 +88,8 @@ const Header = () => {
             <img
               src={notificationIcon}
               alt="Notification"
-              width="24"
-              height="24"
+              width="26"
+              height="30"
             />
           </div>
           {showNotifications && (

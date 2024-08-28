@@ -89,7 +89,7 @@ const Card = ({ id, title, content, date, tags, pinned, isShared, onPin, onDelet
           <GrPin className={styles.pinIcon} onClick={() => onPin(id)} />
         )}
 
-        {/* Display content or editing form */}
+        
         {!isEditing && !isSharing && (
           <div className={styles.displayContent}>
             <h1>{editTitle}</h1>
@@ -138,7 +138,7 @@ const Card = ({ id, title, content, date, tags, pinned, isShared, onPin, onDelet
                 onChange={(e) => setShareEmails(e.target.value)}
                 required
               />
-              <button type="submit">Share</button>
+              <button  className={styles.bt}type="submit">Share</button>
             </form>
           </div>
         )}

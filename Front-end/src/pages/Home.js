@@ -6,7 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import Pi from "../assest/Pi.svg"
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const [title, setTitle] = useState("");
@@ -148,7 +148,8 @@ const Home = () => {
             />
           ))
         ) : (
-          <h2 className={style.noNotes}>No notes available</h2>
+          
+          <img  className={style.imgnote} src={Pi} alt="note"/>
         )}
       </div>
 
@@ -196,8 +197,8 @@ const Home = () => {
                 />
                 <button onClick={handleAddTag} className={style.addTagButton}>
                   <img
-                    width="24"
-                    height="24"
+                    width="30"
+                    height="30"
                     src="https://img.icons8.com/quill/50/filled-plus-2-math.png"
                     alt="add"
                   />

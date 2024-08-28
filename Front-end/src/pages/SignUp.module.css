@@ -66,11 +66,13 @@
   border-radius: 4px;
   font-size: 1rem;
   transition: border-color 0.3s ease;
+  border: 3px solid  #132743; 
+  border-radius: 20px;
 }
 
 .input:focus {
   outline: none;
-  border-color: #1F6F78;
+  border-color: #ffcab0;
   box-shadow: 0 0 0 2px rgba(31, 111, 120, 0.2);
 }
 
@@ -90,11 +92,10 @@
 }
 
 .signUpButton {
-  background-color: #35ac4d;
-  color: white;
+  background-color: #407088;
+  color: #ffcab0;
   padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 4px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -103,7 +104,7 @@
 }
 
 .signUpButton:hover {
-  background-color: #14474d;
+  background-color: #132743;
   transform: translateY(-2px);
 }
 
