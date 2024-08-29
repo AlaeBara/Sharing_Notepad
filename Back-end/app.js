@@ -18,6 +18,23 @@ app.use(
     credentials: true, // Allow credentials (cookies)
   })
 );
+app.set('trust proxy', 1)
+app.use((req, res, next) => {
+  res.header("Content-Type", "application/json;charset=UTF-8");
+  res.header("Access-Control-Allow-Methods", "GET,PATCH,PUT,POST,DELETE");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Accept, Authorization,x-auth-token, Content-Type, X-Requested-With, Set-Cookie"
+  );
+
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    return res.status(200).end()
+  }
+
+  return next()
+});
 
 // Middleware
 app.use(express.json());
