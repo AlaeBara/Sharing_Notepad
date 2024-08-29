@@ -1,4 +1,30 @@
-# 📝 Projet: Développement du bloc notes avec option de partage front-end
+# 📝 Projet: Développement du bloc notes avec option de partage front-end/back-end
+
+## 🔑 Login
+![login](https://github.com/user-attachments/assets/87bc9ffc-3717-4137-b8ab-db81511ab1af)
+
+## 📝 Sign Up
+![signup](https://github.com/user-attachments/assets/b5ba01f2-b61b-4a22-b464-c9a39e00ef7c)
+
+## 🏠 Home
+![home](https://github.com/user-attachments/assets/3d464b5c-e763-4246-9e9b-3e5f291a778e)
+
+## ✍️ Add Note
+![addnote](https://github.com/user-attachments/assets/95cf092c-8ad3-4f49-9da9-0c40ed21f9a3)
+
+## 📒 Notes
+![notes](https://github.com/user-attachments/assets/2a481882-48a8-4310-a520-9d12f004f757)
+
+## ✏️ Update Note
+![updatenote](https://github.com/user-attachments/assets/c8304885-bed2-43b9-b384-17a5990c0d81)
+
+## 🔗 Share Note
+![sharenote](https://github.com/user-attachments/assets/f45b2069-b0b3-4d4b-91ca-2e2b8a4f648d)
+
+## 🔔 Notification Page
+![notificationpage](https://github.com/user-attachments/assets/7ed422bb-8bd6-4cfe-aff2-e100d727b26c)
+
+## 🎯 Objectif
 
 Le but de ce projet est de développer l'interface utilisateur pour le partage de notes spécifiques, définies dans une durée de **28 jours**.
 
@@ -37,12 +63,14 @@ Pour plus de détails, veuillez consulter l'image **Prototypage&Userflow.png**.
 - ➕ **Ajouter des tags** avec le bouton +
 - 🔘 **Bouton Ajouter**
 
-  ### Carte Notification
-  -
+### 📢 Carte Notification
+- **Nom**
+- **Titre de note**
+- ✅ **Bouton d'acceptation** et ❌ **Bouton de refus**
 
-## 🗂️ Définition de tableau Kanban
-
-Pour plus de détails, veuillez consulter l'image **KanbanNotes.png**.
+### 📤 Carte Partager
+- **Email**
+- 📧 **Bouton Share**
 
 ## 🔄 Définition des Daily Stand Up
 
@@ -50,24 +78,29 @@ Pour assurer une bonne communication entre les membres de l'équipe avec limitat
 
 ## 🔧 Fonctionnalités
 
-### 🖌️ **Amina Ahllal**
-- Design et structure des pages
-- Création des pages de connexion
-- Front-end : Inscription, Connexion et En-tête
+### 🎨 **Amina Ahllal**
+- 🎨 Design et structure des pages
+- 📝 Création des pages de connexion
+- 🎨 Front-end : Inscription, Connexion et En-tête
+- 🗂️ Création de Carte Partager
+- 🎨 Front-end : Carte Share
+- 🛠️ Back-end : Add Note
 
 ### 🎨 **Asmae Lhroub**
-- Création des cartes
-- Front-end : page d'accueil, carte d'ajout
+- 🗂️ Création des cartes
+- 🎨 Front-end : page d'accueil, carte d'ajout, carte notification
+- 🛠️ Back-end : Update Card
 
-### 📝 **Younes Idoulhiane**
-- Documentation
-- Notification Card
-- Testing
+### ✍️ **Younes Idoulhiane**
+- 📄 Documentation
+-🤝 Collaboration avec Asmae pour créer la carte notification
+-🎨 Front-end : carte notification
+- 🛠️ Back-end : Notification Card, Delete Card
 
 ### ⚙️ **Alae eddin Bara**
-- Configuration de l'environnement GitHub
-- Collaboration avec Asmae pour créer la page d'accueil
-- Collaboration avec Asmae pour créer la carte d'ajout
+- ⚙️ Configuration de l'environnement GitHub
+- 🤝 Collaboration avec Asmae pour créer la page d'accueil, la carte d'ajout
+- 🛠️ Back-end : Login,Signup,  Edit Card, Share Card 
 
 ## 🛠️ Outils
 
@@ -76,10 +109,7 @@ Pour assurer une bonne communication entre les membres de l'équipe avec limitat
 - 🎨 **CSS**
 - 🚀 **react-router-dom**
 - ⚙️ **react-dom/client**
-- 🖌️ **react-icons/fa**
-- 🖌️ **react-icons/gr**
+- 🎨 **react-icons/fa**
+- 🎨 **react-icons/gr**
 - 📦 **@import**
 - 📱 **@media**
-
----
-
