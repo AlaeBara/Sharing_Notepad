@@ -122,7 +122,7 @@ const Card = ({ id, title, content, date, tags, pinned, isShared, onPin, onDelet
             </button>
           </div>
         )}
-
+// sharing card
         {isSharing && (
           <div className={styles.shareContent}>
             <form
