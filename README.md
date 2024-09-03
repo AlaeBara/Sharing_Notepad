@@ -13,7 +13,6 @@ Le but de ce projet est de développer une application web complète de gestion 
 4. **Supprimer une Note**: Option pour supprimer une note.
 5. **Épingler une Note**: Fonctionnalité pour épingler une note pour un accès rapide.
 6. **Partager une Note**: Les utilisateurs peuvent partager des notes avec d'autres utilisateurs par email.
-7. **Notifications**: Gestion des notifications lors du partage des notes.
 
 
 ## 🔄 Définition des Daily Stand Up
@@ -40,7 +39,7 @@ Pour assurer une bonne communication entre les membres de l'équipe avec limitat
 - Documentation
 - Collaboration sur la création de la carte notification
 - Développement front-end de la carte notification
-- Back-end : Gestion des notifications et suppression de carte
+- Back-end :Suppression de carte
 
 ### ⚙️ **Alaeddine Bara**
 - Configuration de l'environnement GitHub
